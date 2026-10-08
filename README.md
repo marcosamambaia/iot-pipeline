@@ -101,7 +101,7 @@ VIEWS SQL CRIADAS
 
 Média por dispositivo:
 
-Código
+
 
 ``` 
 CREATE VIEW avg_temp_por_dispositivo AS
@@ -120,7 +120,7 @@ GROUP BY hora;
 
 Máximas e mínimas por dia:
 
-Código
+
 ``` 
 CREATE VIEW temp_max_min_por_dia AS
 SELECT DATE(timestamp) AS data,
