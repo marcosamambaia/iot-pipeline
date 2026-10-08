@@ -65,7 +65,7 @@ Criar banco e tabela:
 
 ```  
 CREATE DATABASE iotdb;
-``` 
+ 
 \c iotdb;
 
 CREATE TABLE temperature_readings (
