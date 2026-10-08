@@ -37,7 +37,7 @@ Streamlit
 Plotly
 
 ESTRUTURA DO PROJETO
-´´´ 
+``` 
 iot-pipeline/
     data/
         temperature.csv
@@ -48,26 +48,24 @@ iot-pipeline/
     docs/
         trabalho.pdf (opcional)
     README.md
-´´´
+``` 
 CONFIGURAÇÃO DO DOCKER + POSTGRESQL
 
 Criar container:
 
-´´´ 
+``` 
 docker run --name postgres-iot -e POSTGRES_PASSWORD=senha123 -p 5432:5432 -d postgres
-´´´
+``` 
 Acessar o banco:
 
-Código
-´´´ 
+``` 
 docker exec -it postgres-iot psql -U postgres
-´´´ 
+``` 
 Criar banco e tabela:
 
-Código
-´´´ 
+```  
 CREATE DATABASE iotdb;
-
+``` 
 \c iotdb;
 
 CREATE TABLE temperature_readings (
@@ -77,56 +75,53 @@ CREATE TABLE temperature_readings (
     timestamp TIMESTAMP
 );
 
-´´´ 
+``` 
 GERADOR DE DADOS IOT (7 DIAS)
 
 Arquivo: src/generate_data.py
 
-Código
-´´´ 
+``` 
 python src/generate_data.py
-´´´ 
+``` 
 PIPELINE DE INSERÇÃO NO POSTGRESQL
 
 Arquivo: src/pipeline.py
 
 Executar:
 
-Código
-´´´ 
+```  
 python src/pipeline.py
+
+``` 
 Mensagem esperada:
-´´´ 
-Código
-´´´ 
+``` 
 Dados inseridos com sucesso!
 VIEWS SQL CRIADAS
-´´´ 
+``` 
 
 Média por dispositivo:
 
 Código
 
-´´´ 
+``` 
 CREATE VIEW avg_temp_por_dispositivo AS
 SELECT device_id, AVG(temperature) AS avg_temp
 FROM temperature_readings
 GROUP BY device_id;
 Leituras por hora:
-
-Código
+``` 
+``` 
 CREATE VIEW leituras_por_hora AS
 SELECT EXTRACT(HOUR FROM timestamp) AS hora,
        COUNT(*) AS contagem
 FROM temperature_readings
 GROUP BY hora;
-´´´ 
+``` 
 
 Máximas e mínimas por dia:
 
 Código
-
-´´´ 
+``` 
 CREATE VIEW temp_max_min_por_dia AS
 SELECT DATE(timestamp) AS data,
        MAX(temperature) AS temp_max,
@@ -134,17 +129,16 @@ SELECT DATE(timestamp) AS data,
 FROM temperature_readings
 GROUP BY data;
 
-´´´ 
+``` 
 DASHBOARD STREAMLIT
 
 Arquivo: src/dashboard.py
 
 Executar:
 
-Código
-´´´ 
+``` 
 streamlit run src/dashboard.py
-´´´ 
+``` 
 Graficos exibidos:
 
 Média por dispositivo
@@ -185,10 +179,9 @@ Crie o ambiente virtual
 
 Instale dependências:
 
-Código
-´´´ 
+``` 
 pip install pandas psycopg2-binary sqlalchemy streamlit plotly
-´´´ 
+``` 
 Suba o Docker PostgreSQL
 
 Gere os dados
@@ -199,42 +192,16 @@ Rode o dashboard
 
 COMANDOS GIT UTILIZADOS
 
-Código
+``` 
 git init
 git add .
 git commit -m "Pipeline IoT completo"
 git branch -M main
 git remote add origin https://github.com/SEU_USUARIO/iot-pipeline.git
 git push -u origin main
-VÍDEO PITCH (ATÉ 4 MINUTOS)
+``` 
 
-Sugestão de roteiro:
-
-Apresentação do problema
-
-Arquitetura do pipeline
-
-Demonstração do Docker
-
-Inserção dos dados
-
-Dashboard funcionando
-
-Insights obtidos
-
-CONCLUSÃO
-
-Este projeto demonstra um pipeline IoT completo, moderno e escalável, integrando:
-
-Python
-Docker
-PostgreSQL
-SQLAlchemy
-Streamlit
-Plotly
-
-Com documentação, código limpo e visualizações interativas.
 
 ============================================================
-FIM DO README ASCII
+FIM DO README 
 ============================================================
