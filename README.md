@@ -15,7 +15,7 @@ Criar views SQL para análise
 Exibir gráficos interativos em um dashboard Streamlit
 
 O objetivo é demonstrar uma arquitetura moderna de ingestão, armazenamento e visualização de dados IoT.
-
+============================================================
 ARQUITETURA DO PIPELINE
 
 Fluxo geral:
@@ -35,7 +35,7 @@ SQLAlchemy
 Streamlit
 
 Plotly
-
+============================================================
 ESTRUTURA DO PROJETO
 ``` 
 iot-pipeline/
@@ -149,27 +149,8 @@ Máximas e mínimas por dia
 
 Temperatura ao longo do último dia
 
-CAPTURAS DE TELA
+============================================================
 
-Inclua no GitHub:
-
-Gráficos do dashboard
-
-Pipeline funcionando
-
-Banco populado
-
-Views SQL
-
-INSIGHTS OBTIDOS
-
-Sensores apresentam comportamento estável entre 15 C e 35 C
-
-Picos de leitura ocorrem em horários específicos
-
-Máximas e mínimas variam por dia devido à simulação realista
-
-Pipeline suporta expansão para mais sensores e mais dias
 
 COMO EXECUTAR O PROJETO
 
@@ -189,6 +170,7 @@ Gere os dados
 Execute o pipeline
 
 Rode o dashboard
+============================================================
 
 COMANDOS GIT UTILIZADOS
 
